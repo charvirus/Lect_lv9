@@ -80,7 +80,6 @@ public class ItemManager {
 				sum += jangList.get(i).getPrice();
 			}
 		}
-		System.out.println(sum);
 		return sum;
 	}
 
@@ -144,12 +143,15 @@ public class ItemManager {
 		jangList.remove(inp);
 	}
 
-	public void delAllJangItem(User user) {
-		for (int i = 0; i <jangList.size(); i++) {
+	public void delUserJangItem(User user) {
+
+		for (int i = 0; i < jangList.size(); i++) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
 				jangList.remove(i);
+				i = 0;
 			}
+
 		}
-		
+
 	}
 }
