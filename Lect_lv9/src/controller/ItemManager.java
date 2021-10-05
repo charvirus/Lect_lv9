@@ -13,7 +13,7 @@ public class ItemManager {
 
 	public ItemManager() {
 		init();
-	} 
+	}  
 
 	void init() {
 		category.add("°úÀÚ");
