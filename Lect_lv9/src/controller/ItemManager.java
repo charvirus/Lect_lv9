@@ -84,6 +84,12 @@ public class ItemManager {
 		Item temp = new Item(name, price, category.get(sel));
 		itemList.add(temp);
 	}
+	
+	public void delItem() {
+		printItemList();
+		System.out.println("[아이템 삭제] 삭제할 아이템 번호를 입력하세요. ");
+		int sel = UserManager.scan.nextInt();
+	}
 
 	public void addCategory() {
 		System.out.println("[카테고리추가] 카테고리 이름을 입력하세요. ");

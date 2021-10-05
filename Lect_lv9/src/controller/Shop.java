@@ -46,14 +46,14 @@ public class Shop {
 	private void managerMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1. 아이템관리]\n[2. 카테고리 관리]\n[3. 장바구니 관리]\n[4. 유저 관리]\n[0.뒤로가기] ");
+			System.out.println("[1. 아이템 관리]\n[2. 카테고리 관리]\n[3. 장바구니 관리]\n[4. 유저 관리]\n[0.뒤로가기] ");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				itemMenu();
 			} else if (sel == 2) {
 				categoryMenu();
 			} else if (sel == 3) {
-
+				im.printJang();
 			} else if (sel == 4) {
 				userMenu();
 			} else if (sel == 0) {
@@ -99,12 +99,12 @@ public class Shop {
 	private void itemMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.전체카테고리]\n[2.카테고리추가]\n[3.카테고리삭제]\n[0.뒤로가기]");
+			System.out.println("[1.전체 아이템]\n[2.아이템 추가]\n[3.아이템 삭제]\n[0.뒤로가기]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
-				im.printCategory();
+				im.printItemList();
 			} else if (sel == 2) {
-
+				im.addItem();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -119,7 +119,8 @@ public class Shop {
 			if (sel == 1) {
 				im.printCategory();
 			} else if (sel == 2) {
-
+				im.printCategory();
+				im.addCategory();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -133,7 +134,11 @@ public class Shop {
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				um.printUser();
-			} else if (sel == 0) {
+			} else if (sel == 2) {
+
+			} else if (sel == 3) {
+
+			}else if (sel == 0) {
 				run = false;
 			}
 		}
