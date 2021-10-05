@@ -74,6 +74,9 @@ public class Shop {
 				System.out.println("삭제할 아이템을 선택해주세요.");
 				int inp = UserManager.scan.nextInt();
 				im.delJangItem(um.getUserList().get(um.userLog).getId(), inp);
+			} else if (sel == 3) {
+				int sum = 0;
+				
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -105,6 +108,8 @@ public class Shop {
 				im.printItemList();
 			} else if (sel == 2) {
 				im.addItem();
+			} else if (sel == 3) {
+				im.delItem();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -121,6 +126,8 @@ public class Shop {
 			} else if (sel == 2) {
 				im.printCategory();
 				im.addCategory();
+			} else if (sel == 3) {
+				im.delCategory();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -135,10 +142,10 @@ public class Shop {
 			if (sel == 1) {
 				um.printUser();
 			} else if (sel == 2) {
-
+				um.join();
 			} else if (sel == 3) {
-
-			}else if (sel == 0) {
+				um.withdraw();
+			} else if (sel == 0) {
 				run = false;
 			}
 		}

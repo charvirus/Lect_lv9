@@ -13,7 +13,7 @@ public class ItemManager {
 
 	public ItemManager() {
 		init();
-	}  
+	}
 
 	void init() {
 		category.add("과자");
@@ -73,6 +73,16 @@ public class ItemManager {
 		}
 	}
 
+	public int itemListCnt(User u) {
+		int sum = 0;
+		for (int i = 0; i < jangList.size(); i++) {
+			if (u.getId().equals(jangList.get(i).getUserId())) {
+				
+			}
+		}
+		return sum;
+	}
+
 	public void addItem() {
 		System.out.println("[아이템추가] 아이템 이름을 입력하세요. ");
 		String name = UserManager.scan.next();
@@ -84,17 +94,33 @@ public class ItemManager {
 		Item temp = new Item(name, price, category.get(sel));
 		itemList.add(temp);
 	}
-	
+
 	public void delItem() {
 		printItemList();
 		System.out.println("[아이템 삭제] 삭제할 아이템 번호를 입력하세요. ");
 		int sel = UserManager.scan.nextInt();
+		if (sel >= 0 && sel < itemList.size()) {
+			itemList.remove(sel);
+		} else {
+			System.out.println("유효한 번호를 입력하세요.");
+		}
 	}
 
 	public void addCategory() {
 		System.out.println("[카테고리추가] 카테고리 이름을 입력하세요. ");
 		String name = UserManager.scan.next();
 		category.add(name);
+	}
+
+	public void delCategory() {
+		printCategory();
+		System.out.println("[아이템 삭제] 삭제할 카테고리 번호를 입력하세요. ");
+		int sel = UserManager.scan.nextInt();
+		if (sel >= 0 && sel < category.size()) {
+			category.remove(sel);
+		} else {
+			System.out.println("유효한 번호를 입력하세요.");
+		}
 	}
 
 	public void addCart(String usId, int caID, int itemID) {
@@ -105,6 +131,7 @@ public class ItemManager {
 			if (category.get(caID).equals(itemList.get(i).getCate())) {
 				if (itemID == n) {
 					temp.setItemName(itemList.get(i).getName());
+					temp.setPrice(itemList.get(i).getPrice());
 				}
 				n++;
 			}
