@@ -11,6 +11,7 @@ public class UserManager {
 	public static Scanner scan = new Scanner(System.in);
 	private Vector<User> userList = new Vector<>();
 	public int userLog = -1;
+	public boolean adminLog = false;
 
 	public UserManager() {
 		init();
@@ -30,6 +31,7 @@ public class UserManager {
 			User temp = new User(name, ran.nextInt(10000));
 			userList.add(temp);
 		}
+		userList.add(new User("관리자", 100000));
 	}
 
 	public void join() {
@@ -63,8 +65,14 @@ public class UserManager {
 		String id = scan.next();
 		for (int i = 0; i < userList.size(); i++) {
 			if (id.equals(userList.get(i).getId())) {
-				userLog = i;
-				break;
+				if ("관리자".equals(userList.get(i).getId())) {
+					userLog = i;
+					adminLog = true;
+					break;
+				} else {
+					userLog = i;
+					break;
+				}
 			}
 		}
 		if (userLog == -1) {
@@ -81,6 +89,7 @@ public class UserManager {
 			System.out.println("[메세지] " + userList.get(userLog).getId() + "님 로그아웃");
 		}
 		userLog = -1;
+		adminLog = false;
 	}
 
 	public void printUser() {
@@ -89,8 +98,8 @@ public class UserManager {
 			userList.get(i).print();
 		}
 	}
-	
-	public Vector<User> getUserList(){
+
+	public Vector<User> getUserList() {
 		return userList;
 	}
 }

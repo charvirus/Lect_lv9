@@ -19,7 +19,7 @@ public class Shop {
 				}
 			} else if (sel == 4) {
 				um.logout();
-			} else if (sel == 100) {
+			} else if (um.adminLog && sel == 100) {
 				managerMenu();
 			} else if (sel == 0) {
 				break;
@@ -73,10 +73,16 @@ public class Shop {
 				im.printJang(um.getUserList().get(um.userLog));
 				System.out.println("삭제할 아이템을 선택해주세요.");
 				int inp = UserManager.scan.nextInt();
-				im.delJangItem(um.getUserList().get(um.userLog).getId(), inp);
+				im.delJangItem(inp);
 			} else if (sel == 3) {
-				int sum = 0;
-				
+				int sum = im.itemListTotal(um.getUserList().get(um.userLog));
+				int money = um.getUserList().get(um.userLog).getMoney();
+				if(sum>money) {
+					System.out.println("금액이 부족합니다.");
+				}else {
+					um.getUserList().get(um.userLog).setMoney(money - sum);
+					im.delAllJangItem(um.getUserList().get(um.userLog));					
+				}
 			} else if (sel == 0) {
 				run = false;
 			}

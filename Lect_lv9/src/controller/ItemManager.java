@@ -73,13 +73,14 @@ public class ItemManager {
 		}
 	}
 
-	public int itemListCnt(User u) {
+	public int itemListTotal(User u) {
 		int sum = 0;
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
-				
+				sum += jangList.get(i).getPrice();
 			}
 		}
+		System.out.println(sum);
 		return sum;
 	}
 
@@ -139,7 +140,16 @@ public class ItemManager {
 		jangList.add(temp);
 	}
 
-	public void delJangItem(String usId, int inp) {
+	public void delJangItem(int inp) {
 		jangList.remove(inp);
+	}
+
+	public void delAllJangItem(User user) {
+		for (int i = 0; i <jangList.size(); i++) {
+			if (user.getId().equals(jangList.get(i).getUserId())) {
+				jangList.remove(i);
+			}
+		}
+		
 	}
 }
