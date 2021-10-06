@@ -177,12 +177,18 @@ public class ItemManager {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
 				for (int j = 0; j < itemList.size(); j++) {
-					if(jangList.get(i).getItemName().equals(itemList.get(j).getName())) {
+					if (itemList.get(j).getName().equals(jangList.get(i).getItemName())) {
 						itemList.get(j).subCnt();
 					}
 				}
 			}
 		}
+		for (int i = jangList.size()-1; i >= 0; i--) {
+			if (user.getId().equals(jangList.get(i).getUserId())) {
+				jangList.remove(i);
+			}
+		}
+
 	}
 
 	public int getItemCnt(int caID, int itID) {

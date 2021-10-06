@@ -26,6 +26,6 @@ public class User {
 	}
 
 	public void print() {
-		System.out.println("[" + this.id + "] ±Ý¾×" + this.money);
+		System.out.println("[" + this.id + "] ê¸ˆì•¡" + this.money);
 	}
 }
