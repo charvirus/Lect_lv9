@@ -10,6 +10,7 @@ public class ItemManager {
 	Vector<String> category = new Vector<>();
 	Vector<Item> itemList = new Vector<>();
 	Vector<Cart> jangList = new Vector<>();
+	Vector<Cart> log = new Vector<>();
 
 	public ItemManager() {
 		init();
@@ -55,6 +56,10 @@ public class ItemManager {
 			str += tempItemList.get(i).getName() + ":";
 			str += tempItemList.get(i).getCnt() * tempItemList.get(i).getPrice();
 			System.out.println(str);
+		}
+		System.out.println("-------------------");
+		for (int i = 0; i < log.size(); i++) {
+			log.get(i).printLog();
 		}
 	}
 
@@ -183,7 +188,10 @@ public class ItemManager {
 				}
 			}
 		}
-		for (int i = jangList.size()-1; i >= 0; i--) {
+		for (int i = 0; i < jangList.size(); i++) {
+			log.add(jangList.get(i));
+		}
+		for (int i = jangList.size() - 1; i >= 0; i--) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
 				jangList.remove(i);
 			}

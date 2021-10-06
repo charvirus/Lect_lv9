@@ -31,4 +31,8 @@ public class Cart {
 	public void print() {
 		System.out.println("아이템 : "+this.itemName+", 가격 : "+this.price);
 	}
+	
+	public void printLog() {
+		System.out.println("유저 : "+this.userId+", 아이템 : "+this.itemName+", 가격 : "+this.price);
+	}
 }
