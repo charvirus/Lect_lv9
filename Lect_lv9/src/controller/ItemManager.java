@@ -35,7 +35,7 @@ public class ItemManager {
 		itemList.add(temp);
 	}
 
-	public void printJang() {
+	public void adminprintJang() {
 		for (int i = 0; i < jangList.size(); i++) {
 			jangList.get(i).print();
 		}

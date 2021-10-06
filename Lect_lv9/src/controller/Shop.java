@@ -53,7 +53,7 @@ public class Shop {
 			} else if (sel == 2) {
 				categoryMenu();
 			} else if (sel == 3) {
-				im.printJang();
+				im.adminprintJang();
 			} else if (sel == 4) {
 				userMenu();
 			} else if (sel == 0) {
