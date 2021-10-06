@@ -101,7 +101,13 @@ public class Shop {
 			im.printItemList(caID);
 			System.out.println("[아이템] 번호를 입력하세요");
 			int itID = UserManager.scan.nextInt();
-			im.addCart(um.getUserList().get(um.userLog).getId(), caID, itID);
+			int cnt = 0;
+			cnt = im.getItemCnt(caID, itID);
+			if(cnt != 0) {
+				im.addCart(um.getUserList().get(um.userLog).getId(), caID, itID);				
+			}else {
+				System.out.println("개수가 부족합니다.");
+			}
 		}
 	}
 

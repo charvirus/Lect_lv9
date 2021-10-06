@@ -21,17 +21,17 @@ public class ItemManager {
 		category.add("육류");
 		category.add("음료수");
 
-		Item temp = new Item("새우깡", 1000, category.get(0));
+		Item temp = new Item("새우깡", 1000, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("고등어", 2000, category.get(1));
+		temp = new Item("고등어", 2000, category.get(1), 5);
 		itemList.add(temp);
-		temp = new Item("칸쵸", 3600, category.get(0));
+		temp = new Item("칸쵸", 3600, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("소고기", 6500, category.get(2));
+		temp = new Item("소고기", 6500, category.get(2), 5);
 		itemList.add(temp);
-		temp = new Item("콜라", 500, category.get(3));
+		temp = new Item("콜라", 500, category.get(3), 5);
 		itemList.add(temp);
-		temp = new Item("새우", 1800, category.get(1));
+		temp = new Item("새우", 1800, category.get(1), 5);
 		itemList.add(temp);
 	}
 
@@ -91,7 +91,9 @@ public class ItemManager {
 		printCategory();
 		System.out.println("[아이템추가] 카테고리를 입력하세요.");
 		int sel = UserManager.scan.nextInt();
-		Item temp = new Item(name, price, category.get(sel));
+		System.out.println("[아이템추가] 수량을 입력하세요.");
+		int cnt = UserManager.scan.nextInt();
+		Item temp = new Item(name, price, category.get(sel), cnt);
 		itemList.add(temp);
 	}
 
@@ -144,14 +146,24 @@ public class ItemManager {
 	}
 
 	public void delUserJangItem(User user) {
-
 		for (int i = 0; i < jangList.size(); i++) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
 				jangList.remove(i);
-				i = 0;
 			}
-
 		}
+	}
 
+	public int getItemCnt(int caID, int itID) {
+		int cnt = 0;
+		int n = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			if (category.get(caID).equals(itemList.get(i).getCate())) {
+				if (itID == n) {
+					cnt = itemList.get(i).getCnt();
+				}
+				n++;
+			}
+		}
+		return cnt;
 	}
 }

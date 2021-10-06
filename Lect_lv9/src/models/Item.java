@@ -4,11 +4,13 @@ public class Item {
 	private String name;
 	private int price;
 	private String category;
-
-	public Item(String na, int pr, String cate) {
+	private int cnt;
+	
+	public Item(String na, int pr, String cate, int cnt) {
 		this.name = na;
 		this.price = pr;
 		this.category = cate;
+		this.cnt = cnt;
 	}
 
 	public void setName(String name) {
@@ -33,6 +35,21 @@ public class Item {
 
 	public String getCate() {
 		return this.category;
+	}
+	
+	public void addCnt() {
+		this.cnt++;
+	}
+	public void subCnt() {
+		this.cnt--;
+	}
+	
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
+	public int getCnt() {
+		return this.cnt;
 	}
 	
 	public void print() {
