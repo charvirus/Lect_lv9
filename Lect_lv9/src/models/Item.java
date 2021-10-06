@@ -55,4 +55,8 @@ public class Item {
 	public void print() {
 		System.out.println("[" + this.name + "]" + "[" + this.price + "]" + "[" + this.category + "]");
 	}
+	
+	public void printAll() {
+		System.out.println("[" + this.name + "]" + "[" + this.price + "]" + "[" + this.category + "]"+ "[" + this.cnt + "]");
+	}
 }

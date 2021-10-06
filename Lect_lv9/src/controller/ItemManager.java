@@ -36,15 +36,32 @@ public class ItemManager {
 	}
 
 	public void adminprintJang() {
-		for (int i = 0; i < jangList.size(); i++) {
-			jangList.get(i).print();
+		Vector<Item> tempItemList = itemList;
+		for (int i = 0; i < tempItemList.size() - 1; i++) {
+			for (int j = 0; j < tempItemList.size() - 1 - i; j++) {
+				if (5 - tempItemList.get(j).getCnt() * tempItemList.get(j).getPrice() < 5
+						- tempItemList.get(j + 1).getCnt() * tempItemList.get(j + 1).getPrice()) {
+					Item temp = tempItemList.get(j);
+					tempItemList.set(j, tempItemList.get(j + 1));
+					tempItemList.set(j + 1, temp);
+				}
+			}
+
+		}
+
+		for (int i = 0; i < tempItemList.size(); i++) {
+			String str = "";
+			str += tempItemList.get(i).getCate() + ":";
+			str += tempItemList.get(i).getName() + ":";
+			str += tempItemList.get(i).getCnt() * tempItemList.get(i).getPrice();
+			System.out.println(str);
 		}
 	}
 
 	public void printJang(User u) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
-				System.out.print("["+i+"] ");
+				System.out.print("[" + i + "] ");
 				jangList.get(i).print();
 			}
 		}
@@ -83,11 +100,11 @@ public class ItemManager {
 		}
 		return sum;
 	}
-	
+
 	public int itemListCnt(User u) {
 		int cnt = 0;
-		for(int i = 0;i<jangList.size();i++) {
-			if(u.getId().equals(jangList.get(i).getUserId())) {
+		for (int i = 0; i < jangList.size(); i++) {
+			if (u.getId().equals(jangList.get(i).getUserId())) {
 				cnt++;
 			}
 		}
