@@ -16,22 +16,22 @@ public class ItemManager {
 	}
 
 	void init() {
-		category.add("°úÀÚ");
-		category.add("»ı¼±");
-		category.add("À°·ù");
-		category.add("À½·á¼ö");
+		category.add("ê³¼ì");
+		category.add("ìƒì„ ");
+		category.add("ìœ¡ë¥˜");
+		category.add("ìŒë£Œìˆ˜");
 
-		Item temp = new Item("»õ¿ì±ø", 1000, category.get(0), 5);
+		Item temp = new Item("ìƒˆìš°ê¹¡", 1000, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("°íµî¾î", 2000, category.get(1), 5);
+		temp = new Item("ê³ ë“±ì–´", 2000, category.get(1), 5);
 		itemList.add(temp);
-		temp = new Item("Ä­Ãİ", 3600, category.get(0), 5);
+		temp = new Item("ì¹¸ìµ¸", 3600, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("¼Ò°í±â", 6500, category.get(2), 5);
+		temp = new Item("ì†Œê³ ê¸°", 6500, category.get(2), 5);
 		itemList.add(temp);
-		temp = new Item("Äİ¶ó", 500, category.get(3), 5);
+		temp = new Item("ì½œë¼", 500, category.get(3), 5);
 		itemList.add(temp);
-		temp = new Item("»õ¿ì", 1800, category.get(1), 5);
+		temp = new Item("ìƒˆìš°", 1800, category.get(1), 5);
 		itemList.add(temp);
 	}
 
@@ -44,6 +44,7 @@ public class ItemManager {
 	public void printJang(User u) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
+				System.out.print("["+i+"] ");
 				jangList.get(i).print();
 			}
 		}
@@ -82,16 +83,26 @@ public class ItemManager {
 		}
 		return sum;
 	}
+	
+	public int itemListCnt(User u) {
+		int cnt = 0;
+		for(int i = 0;i<jangList.size();i++) {
+			if(u.getId().equals(jangList.get(i).getUserId())) {
+				cnt++;
+			}
+		}
+		return cnt;
+	}
 
 	public void addItem() {
-		System.out.println("[¾ÆÀÌÅÛÃß°¡] ¾ÆÀÌÅÛ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä. ");
+		System.out.println("[ì•„ì´í…œì¶”ê°€] ì•„ì´í…œ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”. ");
 		String name = UserManager.scan.next();
-		System.out.println("[¾ÆÀÌÅÛÃß°¡] °¡°İÀ» ÀÔ·ÂÇÏ¼¼¿ä. ");
+		System.out.println("[ì•„ì´í…œì¶”ê°€] ê°€ê²©ì„ ì…ë ¥í•˜ì„¸ìš”. ");
 		int price = UserManager.scan.nextInt();
 		printCategory();
-		System.out.println("[¾ÆÀÌÅÛÃß°¡] Ä«Å×°í¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("[ì•„ì´í…œì¶”ê°€] ì¹´í…Œê³ ë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		int sel = UserManager.scan.nextInt();
-		System.out.println("[¾ÆÀÌÅÛÃß°¡] ¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("[ì•„ì´í…œì¶”ê°€] ìˆ˜ëŸ‰ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		int cnt = UserManager.scan.nextInt();
 		Item temp = new Item(name, price, category.get(sel), cnt);
 		itemList.add(temp);
@@ -99,29 +110,29 @@ public class ItemManager {
 
 	public void delItem() {
 		printItemList();
-		System.out.println("[¾ÆÀÌÅÛ »èÁ¦] »èÁ¦ÇÒ ¾ÆÀÌÅÛ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. ");
+		System.out.println("[ì•„ì´í…œ ì‚­ì œ] ì‚­ì œí•  ì•„ì´í…œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. ");
 		int sel = UserManager.scan.nextInt();
 		if (sel >= 0 && sel < itemList.size()) {
 			itemList.remove(sel);
 		} else {
-			System.out.println("À¯È¿ÇÑ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("ìœ íš¨í•œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		}
 	}
 
 	public void addCategory() {
-		System.out.println("[Ä«Å×°í¸®Ãß°¡] Ä«Å×°í¸® ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä. ");
+		System.out.println("[ì¹´í…Œê³ ë¦¬ì¶”ê°€] ì¹´í…Œê³ ë¦¬ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”. ");
 		String name = UserManager.scan.next();
 		category.add(name);
 	}
 
 	public void delCategory() {
 		printCategory();
-		System.out.println("[¾ÆÀÌÅÛ »èÁ¦] »èÁ¦ÇÒ Ä«Å×°í¸® ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. ");
+		System.out.println("[ì•„ì´í…œ ì‚­ì œ] ì‚­ì œí•  ì¹´í…Œê³ ë¦¬ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. ");
 		int sel = UserManager.scan.nextInt();
 		if (sel >= 0 && sel < category.size()) {
 			category.remove(sel);
 		} else {
-			System.out.println("À¯È¿ÇÑ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+			System.out.println("ìœ íš¨í•œ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		}
 	}
 

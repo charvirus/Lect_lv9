@@ -29,7 +29,6 @@ public class Cart {
 	}
 	
 	public void print() {
-		System.out.println("["+this.userId+"] ¾ÆÀÌÅÛ : "+this.itemName+", °¡°İ : "+this.price);
-		
+		System.out.println("ì•„ì´í…œ : "+this.itemName+", ê°€ê²© : "+this.price);
 	}
 }

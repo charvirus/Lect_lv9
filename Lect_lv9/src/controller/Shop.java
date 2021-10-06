@@ -7,7 +7,7 @@ public class Shop {
 	public void mainMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.°¡ÀÔ]\n[2.Å»Åğ]\n[3.·Î±×ÀÎ]\n[4.·Î±×¾Æ¿ô]\n[100.°ü¸®ÀÚ] [0.Á¾·á] ");
+			System.out.println("[1.ê°€ì…]\n[2.íƒˆí‡´]\n[3.ë¡œê·¸ì¸]\n[4.ë¡œê·¸ì•„ì›ƒ]\n[100.ê´€ë¦¬ì] [0.ì¢…ë£Œ] ");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				um.join();
@@ -31,7 +31,7 @@ public class Shop {
 	private void loginMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1. ¼îÇÎ]\n[2. Àå¹Ù±¸´Ï¸ñ·Ï]\n[0. µÚ·Î°¡±â]");
+			System.out.println("[1. ì‡¼í•‘]\n[2. ì¥ë°”êµ¬ë‹ˆëª©ë¡]\n[0. ë’¤ë¡œê°€ê¸°]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				shopMenu();
@@ -46,7 +46,7 @@ public class Shop {
 	private void managerMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1. ¾ÆÀÌÅÛ °ü¸®]\n[2. Ä«Å×°í¸® °ü¸®]\n[3. Àå¹Ù±¸´Ï °ü¸®]\n[4. À¯Àú °ü¸®]\n[0.µÚ·Î°¡±â] ");
+			System.out.println("[1. ì•„ì´í…œ ê´€ë¦¬]\n[2. ì¹´í…Œê³ ë¦¬ ê´€ë¦¬]\n[3. ì¥ë°”êµ¬ë‹ˆ ê´€ë¦¬]\n[4. ìœ ì € ê´€ë¦¬]\n[0.ë’¤ë¡œê°€ê¸°] ");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				itemMenu();
@@ -65,23 +65,33 @@ public class Shop {
 	private void cartMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1. ³» Àå¹Ù±¸´Ï]\n[2. »èÁ¦]\n[3. ±¸ÀÔ]\n[0. µÚ·Î°¡±â]");
+			System.out.println("[1. ë‚´ ì¥ë°”êµ¬ë‹ˆ]\n[2. ì‚­ì œ]\n[3. êµ¬ì…]\n[0. ë’¤ë¡œê°€ê¸°]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printJang(um.getUserList().get(um.userLog));
 			} else if (sel == 2) {
-				im.printJang(um.getUserList().get(um.userLog));
-				System.out.println("»èÁ¦ÇÒ ¾ÆÀÌÅÛÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
-				int inp = UserManager.scan.nextInt();
-				im.delJangItem(inp);
+				int cnt = im.itemListCnt(um.getUserList().get(um.userLog));
+				System.out.println("ì•„ì´í…œ ê°œìˆ˜ : " + cnt);
+				if (cnt != 0) {
+					im.printJang(um.getUserList().get(um.userLog));
+					System.out.println("ì‚­ì œí•  ì•„ì´í…œì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
+					int inp = UserManager.scan.nextInt();
+					if (inp >= 0 && inp < im.itemListCnt(um.getUserList().get(um.userLog))) {
+						im.delJangItem(inp);
+					}else {
+						System.out.println("ì…ë ¥ì„ ë‹¤ì‹œ í•´ì£¼ì„¸ìš”.");
+					}
+				} else {
+					System.out.println("ì¥ë°”êµ¬ë‹ˆê°€ ë¹„ì—ˆìŠµë‹ˆë‹¤.");
+				}
 			} else if (sel == 3) {
 				int sum = im.itemListTotal(um.getUserList().get(um.userLog));
 				int money = um.getUserList().get(um.userLog).getMoney();
-				if(sum>money) {
-					System.out.println("±İ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
-				}else {
-					//um.getUserList().get(um.userLog).setMoney(money - sum);
-					im.delUserJangItem(um.getUserList().get(um.userLog));					
+				if (sum > money) {
+					System.out.println("ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.");
+				} else {
+					// um.getUserList().get(um.userLog).setMoney(money - sum);
+					im.delUserJangItem(um.getUserList().get(um.userLog));
 				}
 			} else if (sel == 0) {
 				run = false;
@@ -93,20 +103,20 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			im.printCategory();
-			System.out.println("[Ä«Å×°í¸®] ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. [Á¾·á. -1]");
+			System.out.println("[ì¹´í…Œê³ ë¦¬] ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. [ì¢…ë£Œ. -1]");
 			int caID = UserManager.scan.nextInt();
 			if (caID == -1) {
 				break;
 			}
 			im.printItemList(caID);
-			System.out.println("[¾ÆÀÌÅÛ] ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+			System.out.println("[ì•„ì´í…œ] ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 			int itID = UserManager.scan.nextInt();
 			int cnt = 0;
 			cnt = im.getItemCnt(caID, itID);
-			if(cnt != 0) {
-				im.addCart(um.getUserList().get(um.userLog).getId(), caID, itID);				
-			}else {
-				System.out.println("°³¼ö°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+			if (cnt != 0) {
+				im.addCart(um.getUserList().get(um.userLog).getId(), caID, itID);
+			} else {
+				System.out.println("ê°œìˆ˜ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 			}
 		}
 	}
@@ -114,7 +124,7 @@ public class Shop {
 	private void itemMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.ÀüÃ¼ ¾ÆÀÌÅÛ]\n[2.¾ÆÀÌÅÛ Ãß°¡]\n[3.¾ÆÀÌÅÛ »èÁ¦]\n[0.µÚ·Î°¡±â]");
+			System.out.println("[1.ì „ì²´ ì•„ì´í…œ]\n[2.ì•„ì´í…œ ì¶”ê°€]\n[3.ì•„ì´í…œ ì‚­ì œ]\n[0.ë’¤ë¡œê°€ê¸°]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printItemList();
@@ -131,7 +141,7 @@ public class Shop {
 	void categoryMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.ÀüÃ¼Ä«Å×°í¸®]\n[2.Ä«Å×°í¸®Ãß°¡]\n[3.Ä«Å×°í¸®»èÁ¦]\n[0.µÚ·Î°¡±â]");
+			System.out.println("[1.ì „ì²´ì¹´í…Œê³ ë¦¬]\n[2.ì¹´í…Œê³ ë¦¬ì¶”ê°€]\n[3.ì¹´í…Œê³ ë¦¬ì‚­ì œ]\n[0.ë’¤ë¡œê°€ê¸°]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printCategory();
@@ -149,7 +159,7 @@ public class Shop {
 	void userMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.ÀüÃ¼À¯Àú]\n[2.À¯ÀúÃß°¡]\n[3.À¯Àú»èÁ¦]\n[0.µÚ·Î°¡±â]");
+			System.out.println("[1.ì „ì²´ìœ ì €]\n[2.ìœ ì €ì¶”ê°€]\n[3.ìœ ì €ì‚­ì œ]\n[0.ë’¤ë¡œê°€ê¸°]");
 			int sel = UserManager.scan.nextInt();
 			if (sel == 1) {
 				um.printUser();

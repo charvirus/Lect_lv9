@@ -18,9 +18,9 @@ public class UserManager {
 	}
 
 	private void init() {
-		String[] a = { "±è", "¹Ú", "ÀÌ", "ÃÖ", "Á¤", "¿À" };
-		String[] b = { "Ã¶", "º´", "¸¸", "¿©", "¾Æ", "¿µ" };
-		String[] c = { "¼ö", "¿í", "¼ö", "Á¤", "¸§", "Èñ" };
+		String[] a = { "ê¹€", "ë°•", "ì´", "ìµœ", "ì •", "ì˜¤" };
+		String[] b = { "ì² ", "ë³‘", "ë§Œ", "ì—¬", "ì•„", "ì˜" };
+		String[] c = { "ìˆ˜", "ìš±", "ìˆ˜", "ì •", "ë¦„", "í¬" };
 		for (int i = 0; i < 10; i++) {
 			int r = ran.nextInt(a.length);
 			String name = a[r];
@@ -31,19 +31,19 @@ public class UserManager {
 			User temp = new User(name, ran.nextInt(10000));
 			userList.add(temp);
 		}
-		userList.add(new User("°ü¸®ÀÚ", 100000));
+		userList.add(new User("ê´€ë¦¬ì", 100000));
 	}
 
 	public void join() {
-		System.out.println("[°¡ÀÔ] id ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("[ê°€ì…] id ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		String id = scan.next();
 		User temp = new User(id, 1000);
 		userList.add(temp);
-		System.out.println("[¸Ş¼¼Áö] " + temp.getId() + "´Ô °¡ÀÔÀ» ÃàÇÏµå¸³´Ï´Ù.");
+		System.out.println("[ë©”ì„¸ì§€] " + temp.getId() + "ë‹˜ ê°€ì…ì„ ì¶•í•˜ë“œë¦½ë‹ˆë‹¤.");
 	}
 
 	public void withdraw() {
-		System.out.println("[Å»Åğ] id ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("[íƒˆí‡´] id ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		String id = scan.next();
 		int idx = -1;
 		for (int i = 0; i < userList.size(); i++) {
@@ -52,20 +52,20 @@ public class UserManager {
 			}
 		}
 		if (idx == -1) {
-			System.out.println("Á¸ÀçÇÏÁö ¾ÊÀº ¾ÆÀÌµğÀÔ´Ï´Ù.");
+			System.out.println("ì¡´ì¬í•˜ì§€ ì•Šì€ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 		} else {
 			userList.remove(idx);
-			System.out.println("Å»Åğ µÇ¾ú½À´Ï´Ù.");
+			System.out.println("íƒˆí‡´ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 
 	public boolean login() {
 		userLog = -1;
-		System.out.println("[·Î±×ÀÎ] id ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		System.out.println("[ë¡œê·¸ì¸] id ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		String id = scan.next();
 		for (int i = 0; i < userList.size(); i++) {
 			if (id.equals(userList.get(i).getId())) {
-				if ("°ü¸®ÀÚ".equals(userList.get(i).getId())) {
+				if ("ê´€ë¦¬ì".equals(userList.get(i).getId())) {
 					userLog = i;
 					adminLog = true;
 					break;
@@ -76,9 +76,9 @@ public class UserManager {
 			}
 		}
 		if (userLog == -1) {
-			System.out.println("[¸Ş¼¼Áö] Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğ ÀÔ´Ï´Ù.");
+			System.out.println("[ë©”ì„¸ì§€] ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë”” ì…ë‹ˆë‹¤.");
 		} else {
-			System.out.println("[¸Ş¼¼Áö] " + userList.get(userLog).getId() + "´Ô ·Î±×ÀÎ");
+			System.out.println("[ë©”ì„¸ì§€] " + userList.get(userLog).getId() + "ë‹˜ ë¡œê·¸ì¸");
 			return true;
 		}
 		return false;
@@ -86,7 +86,7 @@ public class UserManager {
 
 	public void logout() {
 		if (userLog != -1) {
-			System.out.println("[¸Ş¼¼Áö] " + userList.get(userLog).getId() + "´Ô ·Î±×¾Æ¿ô");
+			System.out.println("[ë©”ì„¸ì§€] " + userList.get(userLog).getId() + "ë‹˜ ë¡œê·¸ì•„ì›ƒ");
 		}
 		userLog = -1;
 		adminLog = false;
