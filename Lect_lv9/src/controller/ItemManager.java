@@ -176,7 +176,11 @@ public class ItemManager {
 	public void delUserJangItem(User user) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
-				jangList.remove(i);
+				for (int j = 0; j < itemList.size(); j++) {
+					if(jangList.get(i).getItemName().equals(itemList.get(j).getName())) {
+						itemList.get(j).subCnt();
+					}
+				}
 			}
 		}
 	}

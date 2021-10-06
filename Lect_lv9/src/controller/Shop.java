@@ -90,7 +90,7 @@ public class Shop {
 				if (sum > money) {
 					System.out.println("금액이 부족합니다.");
 				} else {
-					// um.getUserList().get(um.userLog).setMoney(money - sum);
+					um.getUserList().get(um.userLog).setMoney(money - sum);
 					im.delUserJangItem(um.getUserList().get(um.userLog));
 				}
 			} else if (sel == 0) {
