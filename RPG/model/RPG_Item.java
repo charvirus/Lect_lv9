@@ -1,9 +1,9 @@
 package model;
 
 public class RPG_Item {
-	static final int WEAPON = 1;
-	static final int ARMOR = 2;
-	static final int RING = 3;
+	private static final int WEAPON = 1;
+	private static final int ARMOR = 2;
+	private static final int RING = 3;
 	private int kind;
 	private String name;
 	private int power;
@@ -14,6 +14,18 @@ public class RPG_Item {
 		this.name = n;
 		this.power = p;
 		this.price = pr;
+	}
+
+	public static int getWeapon() {
+		return WEAPON;
+	}
+
+	public static int getArmor() {
+		return ARMOR;
+	}
+
+	public static int getRing() {
+		return RING;
 	}
 
 	public int getKind() {
@@ -47,6 +59,5 @@ public class RPG_Item {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
+
 }
