@@ -1,14 +1,14 @@
 package controller;
 
-public class Shop {
-	ItemManager im = new ItemManager();
-	UserManager um = new UserManager();
+public class Shop_Shop {
+	Shop_ItemManager im = new Shop_ItemManager();
+	Shop_UserManager um = new Shop_UserManager();
 
 	public void mainMenu() {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1.가입]\n[2.탈퇴]\n[3.로그인]\n[4.로그아웃]\n[100.관리자] [0.종료] ");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				um.join();
 			} else if (sel == 2) {
@@ -32,7 +32,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1. 쇼핑]\n[2. 장바구니목록]\n[0. 뒤로가기]");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				shopMenu();
 			} else if (sel == 2) {
@@ -47,7 +47,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1. 아이템 관리]\n[2. 카테고리 관리]\n[3. 장바구니 관리]\n[4. 유저 관리]\n[0.뒤로가기] ");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				itemMenu();
 			} else if (sel == 2) {
@@ -66,7 +66,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1. 내 장바구니]\n[2. 삭제]\n[3. 구입]\n[0. 뒤로가기]");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printJang(um.getUserList().get(um.userLog));
 			} else if (sel == 2) {
@@ -75,7 +75,7 @@ public class Shop {
 				if (cnt != 0) {
 					im.printJang(um.getUserList().get(um.userLog));
 					System.out.println("삭제할 아이템을 선택해주세요.");
-					int inp = UserManager.scan.nextInt();
+					int inp = Shop_UserManager.scan.nextInt();
 					if (inp >= 0 && inp < im.itemListCnt(um.getUserList().get(um.userLog))) {
 						im.delJangItem(inp);
 					}else {
@@ -104,13 +104,13 @@ public class Shop {
 		while (run) {
 			im.printCategory();
 			System.out.println("[카테고리] 번호를 입력하세요. [종료. -1]");
-			int caID = UserManager.scan.nextInt();
+			int caID = Shop_UserManager.scan.nextInt();
 			if (caID == -1) {
 				break;
 			}
 			im.printItemList(caID);
 			System.out.println("[아이템] 번호를 입력하세요");
-			int itID = UserManager.scan.nextInt();
+			int itID = Shop_UserManager.scan.nextInt();
 			int cnt = 0;
 			cnt = im.getItemCnt(caID, itID);
 			if (cnt != 0) {
@@ -125,7 +125,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1.전체 아이템]\n[2.아이템 추가]\n[3.아이템 삭제]\n[0.뒤로가기]");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printItemList();
 			} else if (sel == 2) {
@@ -142,7 +142,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1.전체카테고리]\n[2.카테고리추가]\n[3.카테고리삭제]\n[0.뒤로가기]");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				im.printCategory();
 			} else if (sel == 2) {
@@ -160,7 +160,7 @@ public class Shop {
 		boolean run = true;
 		while (run) {
 			System.out.println("[1.전체유저]\n[2.유저추가]\n[3.유저삭제]\n[0.뒤로가기]");
-			int sel = UserManager.scan.nextInt();
+			int sel = Shop_UserManager.scan.nextInt();
 			if (sel == 1) {
 				um.printUser();
 			} else if (sel == 2) {

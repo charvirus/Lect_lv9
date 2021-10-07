@@ -1,9 +1,9 @@
 package controller;
 
-public class Main {
+public class Shop_Main {
 
 	public static void main(String[] args) {
-		Shop shop = new Shop();
+		Shop_Shop shop = new Shop_Shop();
 		shop.mainMenu();
 	}
 }

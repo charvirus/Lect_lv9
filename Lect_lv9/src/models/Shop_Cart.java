@@ -1,6 +1,6 @@
 package models;
 
-public class Cart {
+public class Shop_Cart {
 	private String userId;
 	private String itemName;
 	private int price;

@@ -4,16 +4,16 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 
-import models.User;
+import models.Shop_User;
 
-public class UserManager {
+public class Shop_UserManager {
 	private Random ran = new Random();
 	public static Scanner scan = new Scanner(System.in);
-	private Vector<User> userList = new Vector<>();
+	private Vector<Shop_User> userList = new Vector<>();
 	public int userLog = -1;
 	public boolean adminLog = false;
 
-	public UserManager() {
+	public Shop_UserManager() {
 		init();
 	}
 
@@ -28,16 +28,16 @@ public class UserManager {
 			name += b[r];
 			r = ran.nextInt(c.length);
 			name += c[r];
-			User temp = new User(name, ran.nextInt(10000));
+			Shop_User temp = new Shop_User(name, ran.nextInt(10000));
 			userList.add(temp);
 		}
-		userList.add(new User("관리자", 100000));
+		userList.add(new Shop_User("관리자", 100000));
 	}
 
 	public void join() {
 		System.out.println("[가입] id 를 입력하세요.");
 		String id = scan.next();
-		User temp = new User(id, 1000);
+		Shop_User temp = new Shop_User(id, 1000);
 		userList.add(temp);
 		System.out.println("[메세지] " + temp.getId() + "님 가입을 축하드립니다.");
 	}
@@ -99,7 +99,7 @@ public class UserManager {
 		}
 	}
 
-	public Vector<User> getUserList() {
+	public Vector<Shop_User> getUserList() {
 		return userList;
 	}
 }

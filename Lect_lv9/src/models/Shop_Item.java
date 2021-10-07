@@ -1,12 +1,12 @@
 package models;
 
-public class Item {
+public class Shop_Item {
 	private String name;
 	private int price;
 	private String category;
 	private int cnt;
 	
-	public Item(String na, int pr, String cate, int cnt) {
+	public Shop_Item(String na, int pr, String cate, int cnt) {
 		this.name = na;
 		this.price = pr;
 		this.category = cate;

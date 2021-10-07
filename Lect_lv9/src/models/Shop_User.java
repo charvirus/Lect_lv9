@@ -1,10 +1,10 @@
 package models;
 
-public class User {
+public class Shop_User {
 	private String id;
 	private int money;
 
-	public User(String id, int mo) {
+	public Shop_User(String id, int mo) {
 		this.id = id;
 		this.money = mo;
 	}

@@ -2,17 +2,17 @@ package controller;
 
 import java.util.Vector;
 
-import models.Cart;
-import models.Item;
-import models.User;
+import models.Shop_Cart;
+import models.Shop_Item;
+import models.Shop_User;
 
-public class ItemManager {
+public class Shop_ItemManager {
 	Vector<String> category = new Vector<>();
-	Vector<Item> itemList = new Vector<>();
-	Vector<Cart> jangList = new Vector<>();
-	Vector<Cart> log = new Vector<>();
+	Vector<Shop_Item> itemList = new Vector<>();
+	Vector<Shop_Cart> jangList = new Vector<>();
+	Vector<Shop_Cart> log = new Vector<>();
 
-	public ItemManager() {
+	public Shop_ItemManager() {
 		init();
 	}
 
@@ -22,27 +22,27 @@ public class ItemManager {
 		category.add("육류");
 		category.add("음료수");
 
-		Item temp = new Item("새우깡", 1000, category.get(0), 5);
+		Shop_Item temp = new Shop_Item("새우깡", 1000, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("고등어", 2000, category.get(1), 5);
+		temp = new Shop_Item("고등어", 2000, category.get(1), 5);
 		itemList.add(temp);
-		temp = new Item("칸쵸", 3600, category.get(0), 5);
+		temp = new Shop_Item("칸쵸", 3600, category.get(0), 5);
 		itemList.add(temp);
-		temp = new Item("소고기", 6500, category.get(2), 5);
+		temp = new Shop_Item("소고기", 6500, category.get(2), 5);
 		itemList.add(temp);
-		temp = new Item("콜라", 500, category.get(3), 5);
+		temp = new Shop_Item("콜라", 500, category.get(3), 5);
 		itemList.add(temp);
-		temp = new Item("새우", 1800, category.get(1), 5);
+		temp = new Shop_Item("새우", 1800, category.get(1), 5);
 		itemList.add(temp);
 	}
 
 	public void adminprintJang() {
-		Vector<Item> tempItemList = itemList;
+		Vector<Shop_Item> tempItemList = itemList;
 		for (int i = 0; i < tempItemList.size() - 1; i++) {
 			for (int j = 0; j < tempItemList.size() - 1 - i; j++) {
 				if (5 - tempItemList.get(j).getCnt() * tempItemList.get(j).getPrice() < 5
 						- tempItemList.get(j + 1).getCnt() * tempItemList.get(j + 1).getPrice()) {
-					Item temp = tempItemList.get(j);
+					Shop_Item temp = tempItemList.get(j);
 					tempItemList.set(j, tempItemList.get(j + 1));
 					tempItemList.set(j + 1, temp);
 				}
@@ -63,7 +63,7 @@ public class ItemManager {
 		}
 	}
 
-	public void printJang(User u) {
+	public void printJang(Shop_User u) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
 				System.out.print("[" + i + "] ");
@@ -96,7 +96,7 @@ public class ItemManager {
 		}
 	}
 
-	public int itemListTotal(User u) {
+	public int itemListTotal(Shop_User u) {
 		int sum = 0;
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
@@ -106,7 +106,7 @@ public class ItemManager {
 		return sum;
 	}
 
-	public int itemListCnt(User u) {
+	public int itemListCnt(Shop_User u) {
 		int cnt = 0;
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.getId().equals(jangList.get(i).getUserId())) {
@@ -118,22 +118,22 @@ public class ItemManager {
 
 	public void addItem() {
 		System.out.println("[아이템추가] 아이템 이름을 입력하세요. ");
-		String name = UserManager.scan.next();
+		String name = Shop_UserManager.scan.next();
 		System.out.println("[아이템추가] 가격을 입력하세요. ");
-		int price = UserManager.scan.nextInt();
+		int price = Shop_UserManager.scan.nextInt();
 		printCategory();
 		System.out.println("[아이템추가] 카테고리를 입력하세요.");
-		int sel = UserManager.scan.nextInt();
+		int sel = Shop_UserManager.scan.nextInt();
 		System.out.println("[아이템추가] 수량을 입력하세요.");
-		int cnt = UserManager.scan.nextInt();
-		Item temp = new Item(name, price, category.get(sel), cnt);
+		int cnt = Shop_UserManager.scan.nextInt();
+		Shop_Item temp = new Shop_Item(name, price, category.get(sel), cnt);
 		itemList.add(temp);
 	}
 
 	public void delItem() {
 		printItemList();
 		System.out.println("[아이템 삭제] 삭제할 아이템 번호를 입력하세요. ");
-		int sel = UserManager.scan.nextInt();
+		int sel = Shop_UserManager.scan.nextInt();
 		if (sel >= 0 && sel < itemList.size()) {
 			itemList.remove(sel);
 		} else {
@@ -143,14 +143,14 @@ public class ItemManager {
 
 	public void addCategory() {
 		System.out.println("[카테고리추가] 카테고리 이름을 입력하세요. ");
-		String name = UserManager.scan.next();
+		String name = Shop_UserManager.scan.next();
 		category.add(name);
 	}
 
 	public void delCategory() {
 		printCategory();
 		System.out.println("[아이템 삭제] 삭제할 카테고리 번호를 입력하세요. ");
-		int sel = UserManager.scan.nextInt();
+		int sel = Shop_UserManager.scan.nextInt();
 		if (sel >= 0 && sel < category.size()) {
 			category.remove(sel);
 		} else {
@@ -160,7 +160,7 @@ public class ItemManager {
 
 	public void addCart(String usId, int caID, int itemID) {
 		int n = 0;
-		Cart temp = new Cart();
+		Shop_Cart temp = new Shop_Cart();
 		temp.setUserId(usId);
 		for (int i = 0; i < itemList.size(); i++) {
 			if (category.get(caID).equals(itemList.get(i).getCate())) {
@@ -178,7 +178,7 @@ public class ItemManager {
 		jangList.remove(inp);
 	}
 
-	public void delUserJangItem(User user) {
+	public void delUserJangItem(Shop_User user) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (user.getId().equals(jangList.get(i).getUserId())) {
 				for (int j = 0; j < itemList.size(); j++) {
