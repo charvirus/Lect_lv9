@@ -11,19 +11,22 @@ public class RPG_Guild {
 	RPG_Unit[] partyList;
 
 	public void setGuild() {
-		RPG_Unit temp = new RPG_Unit("호랑이", 1, 100, 10, 5, 0);
-		guildList.add(temp);
-		temp = new RPG_Unit("강아지", 1, 80, 7, 3, 0);
-		guildList.add(temp);
-		temp = new RPG_Unit("사슴", 1, 50, 3, 1, 0);
-		guildList.add(temp);
-		temp = new RPG_Unit("두더지", 1, 70, 5, 2, 0);
-		guildList.add(temp);
-		temp = new RPG_Unit("돼지", 1, 200, 4, 8, 0);
-		guildList.add(temp);
-		temp = new RPG_Unit("사자", 1, 120, 11, 7, 0);
-		guildList.add(temp);
 
+		for (int i = 0; i < PARTY_SIZE; i++) {
+			String[] n1 = { "박", "이", "김", "최", "유", "지", "오" };
+			String[] n2 = { "명", "기", "종", "민", "재", "석", "광" };
+			String[] n3 = { "수", "자", "민", "수", "석", "민", "철" };
+
+			String name = n1[MainGame.ran.nextInt(n1.length)];
+			name += n2[MainGame.ran.nextInt(n2.length)];
+			name += n3[MainGame.ran.nextInt(n3.length)];
+			int ran = MainGame.ran.nextInt(8) + 2;
+			int hp = ran * 11;
+			int atk = ran + 1;
+			int def = ran / 2 + 1;
+			RPG_Unit temp = new RPG_Unit(name, 1, hp, atk, def, 0);
+			guildList.add(temp);
+		}
 		for (int i = 0; i < PARTY_SIZE; i++) {
 			guildList.get(i).setParty(true);
 		}
@@ -193,8 +196,8 @@ public class RPG_Guild {
 			}
 		}
 	}
-	
-	public ArrayList<RPG_Unit> getGuildList(){
+
+	public ArrayList<RPG_Unit> getGuildList() {
 		return guildList;
 	}
 }

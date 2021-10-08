@@ -125,7 +125,38 @@ public class RPG_FileData {
 				String[] unitArr = unitData.split("/");
 				String name = unitArr[0];
 				int level = Integer.parseInt(unitArr[1]);
-				
+				int maxHp = Integer.parseInt(unitArr[2]);
+				int atk = Integer.parseInt(unitArr[3]);
+				int def = Integer.parseInt(unitArr[4]);
+				int exp = Integer.parseInt(unitArr[5]);
+				boolean party = Boolean.parseBoolean(unitArr[6]);
+				RPG_Unit temp = new RPG_Unit(name, level, maxHp, atk, def, exp, party);
+				RPG_Player.getGuildList().add(temp);
+				//=================== item =============
+				String itemData = br.readLine();
+				String itemArr[] = itemData.split("/");
+				if(itemArr[0].equals("null")) {
+					RPG_Player.getGuildList().get(i).setWeapon(null);
+				}else {
+					String[] weapon = itemArr[0].split(",");
+					int itemKind = Integer.parseInt(weapon[0]);
+					String itemName = weapon[1];
+					int itemPower = Integer.parseInt(weapon[2]);
+					int itemPrice = Integer.parseInt(weapon[3]);
+					RPG_Item item = new RPG_Item();
+					item.setItem(itemKind, itemName, itemPower, itemPrice);
+					RPG_Player.getGuildList().get(i).setArmor(item);
+				}
+				if(itemArr[2].equals("null")) {
+					RPG_Player.getGuildList().get(i).setRing(null);
+				}else {
+					String[] ring = itemArr[2].split(",");
+					int itemKind = Integer.parseInt(ring[0]);
+					String itemName = ring[1];
+					int itemPower = Integer.parseInt(ring[2]);
+					int itemPrice = Integer.parseInt(ring[3]);
+					
+				}
 			}
 		}
 	}
