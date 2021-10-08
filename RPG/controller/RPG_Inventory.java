@@ -17,10 +17,10 @@ public class RPG_Inventory {
 				break;
 			}
 			if (sel == 1) {
-
+				equipMenu();
 			}
 			if (sel == 2) {
-
+				sellMenu();
 			}
 		}
 	}
@@ -42,20 +42,20 @@ public class RPG_Inventory {
 			}
 			selEquip--;
 			if (itemList.get(selEquip).getKind() == RPG_Item.getWeapon()) {
-				if (RPG_Player.getGuildUnit(selUnit - 1).getWeapon() != null) {
-					itemList.add(RPG_Player.getGuildUnit(selUnit - 1).getWeapon());
+				if (RPG_Player.getGuildUnit(selUnit).getWeapon() != null) {
+					itemList.add(RPG_Player.getGuildUnit(selUnit).getWeapon());
 				}
-				RPG_Player.getGuildUnit(selUnit - 1).setWeapon(itemList.get(selEquip));
+				RPG_Player.getGuildUnit(selUnit).setWeapon(itemList.get(selEquip));
 			} else if (itemList.get(selEquip).getKind() == RPG_Item.getArmor()) {
-				if (RPG_Player.getGuildUnit(selUnit - 1).getArmor() != null) {
-					itemList.add(RPG_Player.getGuildUnit(selUnit - 1).getArmor());
+				if (RPG_Player.getGuildUnit(selUnit).getArmor() != null) {
+					itemList.add(RPG_Player.getGuildUnit(selUnit).getArmor());
 				}
-				RPG_Player.getGuildUnit(selUnit - 1).setArmor(itemList.get(selEquip));
+				RPG_Player.getGuildUnit(selUnit).setArmor(itemList.get(selEquip));
 			} else if (itemList.get(selEquip).getKind() == RPG_Item.getRing()) {
-				if (RPG_Player.getGuildUnit(selUnit - 1).getRing() != null) {
-					itemList.add(RPG_Player.getGuildUnit(selUnit - 1).getRing());
+				if (RPG_Player.getGuildUnit(selUnit).getRing() != null) {
+					itemList.add(RPG_Player.getGuildUnit(selUnit).getRing());
 				}
-				RPG_Player.getGuildUnit(selUnit - 1).setRing(itemList.get(selEquip));
+				RPG_Player.getGuildUnit(selUnit).setRing(itemList.get(selEquip));
 			}
 			itemList.remove(selEquip);
 		}
@@ -78,6 +78,10 @@ public class RPG_Inventory {
 			System.out.println(" [ 골드 : " + RPG_Player.getPlayerMoney() + " ] ");
 			System.out.println(" 판매할 아이템 번호를 입력하세요. (50 % 세금) [0. 뒤로가기]");
 			int selSell = MainGame.scan.nextInt();
+
+			if (selSell == 0) {
+				break;
+			}
 			System.out.println(itemList.get(selSell - 1).getName() + "을 판매합니다.");
 
 			try {

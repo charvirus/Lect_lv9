@@ -145,6 +145,7 @@ public class RPG_Guild {
 		printParty();
 		System.out.println("교체할 번호를 입력하세요. ");
 		int partyNum = MainGame.scan.nextInt() - 1;
+		printAllUnitStatus();
 		System.out.println("참가할 번호를 입력하세요. ");
 		int guildNum = MainGame.scan.nextInt() - 1;
 
