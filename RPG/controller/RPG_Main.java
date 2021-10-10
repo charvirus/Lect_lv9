@@ -26,9 +26,17 @@ class MainGame {
 			} else if (sel == 3) {
 				player.inventoryMenu();
 			}else if (sel == 4) {
-				
+				try {
+					fileData.save();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}else if (sel == 5) {
-				
+				try {
+					fileData.loadData();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}else {
 				System.out.println("게임을 종료합니다.");
 				break;

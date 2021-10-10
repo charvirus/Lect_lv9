@@ -87,9 +87,9 @@ public class RPG_FileData {
 		}
 		gameData += RPG_Player.getItemSize();
 		gameData += "\r\n";
-		for(int i =0;i<RPG_Player.getItemSize();i++) {
+		for (int i = 0; i < RPG_Player.getItemSize(); i++) {
 			RPG_Item item = RPG_Player.getItemList().get(i);
-			
+
 			gameData += item.getKind();
 			gameData += "/";
 			gameData += item.getName();
@@ -100,17 +100,17 @@ public class RPG_FileData {
 			gameData += "\r\n";
 		}
 		System.out.println(gameData);
-		fout.write(gameData,0,gameData.length());
+		fout.write(gameData, 0, gameData.length());
 		fout.close();
 	}
-	
-	public void loadData() throws IOException{
+
+	public void loadData() throws IOException {
 		File file = null;
 		FileReader reader = null;
 		BufferedReader br = null;
 		String path = "gameData.txt";
 		file = new File(path);
-		if(file.exists()) {
+		if (file.exists()) {
 			reader = new FileReader(path);
 			br = new BufferedReader(reader);
 			String money = br.readLine();
@@ -120,7 +120,7 @@ public class RPG_FileData {
 			int size = Integer.parseInt(guildSize);
 			RPG_Player.getGuildList().clear();
 			System.out.println(size);
-			for(int i = 0;i<size;i++) {
+			for (int i = 0; i < size; i++) {
 				String unitData = br.readLine();
 				String[] unitArr = unitData.split("/");
 				String name = unitArr[0];
@@ -132,12 +132,12 @@ public class RPG_FileData {
 				boolean party = Boolean.parseBoolean(unitArr[6]);
 				RPG_Unit temp = new RPG_Unit(name, level, maxHp, atk, def, exp, party);
 				RPG_Player.getGuildList().add(temp);
-				//=================== item =============
+				// =================== item =============
 				String itemData = br.readLine();
 				String itemArr[] = itemData.split("/");
-				if(itemArr[0].equals("null")) {
+				if (itemArr[0].equals("null")) {
 					RPG_Player.getGuildList().get(i).setWeapon(null);
-				}else {
+				} else {
 					String[] weapon = itemArr[0].split(",");
 					int itemKind = Integer.parseInt(weapon[0]);
 					String itemName = weapon[1];
@@ -145,18 +145,48 @@ public class RPG_FileData {
 					int itemPrice = Integer.parseInt(weapon[3]);
 					RPG_Item item = new RPG_Item();
 					item.setItem(itemKind, itemName, itemPower, itemPrice);
+					RPG_Player.getGuildList().get(i).setWeapon(item);
+				}
+				if (itemArr[1].equals("null")) {
+					RPG_Player.getGuildList().get(i).setArmor(null);
+				} else {
+					String[] armor = itemArr[2].split(",");
+					int itemKind = Integer.parseInt(armor[0]);
+					String itemName = armor[1];
+					int itemPower = Integer.parseInt(armor[2]);
+					int itemPrice = Integer.parseInt(armor[3]);
+					RPG_Item item = new RPG_Item();
+					item.setItem(itemKind, itemName, itemPower, itemPrice);
 					RPG_Player.getGuildList().get(i).setArmor(item);
 				}
-				if(itemArr[2].equals("null")) {
+				if (itemArr[2].equals("null")) {
 					RPG_Player.getGuildList().get(i).setRing(null);
-				}else {
+				} else {
 					String[] ring = itemArr[2].split(",");
 					int itemKind = Integer.parseInt(ring[0]);
 					String itemName = ring[1];
 					int itemPower = Integer.parseInt(ring[2]);
 					int itemPrice = Integer.parseInt(ring[3]);
-					
+					RPG_Item item = new RPG_Item();
+					item.setItem(itemKind, itemName, itemPower, itemPrice);
+					RPG_Player.getGuildList().get(i).setRing(item);
 				}
+			}
+			// ================== item =====================
+			String invenSize = br.readLine();
+			System.out.println(invenSize);
+			int inSize = Integer.parseInt(invenSize);
+			RPG_Player.getInven().getitemList().clear();
+			for (int i = 0; i < inSize; i++) {
+				String invenDate = br.readLine();
+				String[] invenArr= invenDate.split("/");
+				int itemKind = Integer.parseInt(invenArr[0]);
+				String itemName = invenArr[1];
+				int itemPower = Integer.parseInt(invenArr[2]);
+				int itemPrice = Integer.parseInt(invenArr[3]);
+				RPG_Item item = new RPG_Item();
+				item.setItem(itemKind, itemName, itemPower, itemPrice);
+				RPG_Player.getInven().getitemList().add(item);
 			}
 		}
 	}
