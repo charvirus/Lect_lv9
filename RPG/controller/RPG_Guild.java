@@ -52,10 +52,23 @@ public class RPG_Guild {
 			System.out.print("[" + (i + 1) + "번]");
 			System.out.print(" [이름 : " + guildList.get(i).getName() + "]");
 			System.out.print(" [레벨 : " + guildList.get(i).getLevel() + "]");
-			System.out.print(" [체력 : " + guildList.get(i).getHp());
-			System.out.println(" / " + guildList.get(i).getMaxHp() + "]");
-			System.out.print("[공격력 : " + guildList.get(i).getAtk() + "]");
-			System.out.print(" [방어력 : " + guildList.get(i).getDef() + "]");
+			if (this.guildList.get(i).getRing() != null) {
+				System.out.print(" [체력 : " + (guildList.get(i).getHp() + guildList.get(i).getRing().getPower()));
+				System.out.println(" / " + (guildList.get(i).getMaxHp() + guildList.get(i).getRing().getPower()) + "]");
+			} else {
+				System.out.print(" [체력 : " + guildList.get(i).getHp());
+				System.out.println(" / " + guildList.get(i).getMaxHp() + "]");
+			}
+			if (this.guildList.get(i).getWeapon() != null) {
+				System.out.print("[공격력 : " + (guildList.get(i).getAtk() + guildList.get(i).getWeapon().getPower()) + "]");
+			} else {
+				System.out.print("[공격력 : " + guildList.get(i).getAtk() + "]");
+			}
+			if (this.guildList.get(i).getArmor() != null) {
+				System.out.print(" [방어력 : " + (guildList.get(i).getDef() +  guildList.get(i).getArmor().getPower()) +"]");
+			} else {
+				System.out.print(" [방어력 : " + guildList.get(i).getDef() + "]");
+			}
 			System.out.println(" [파티중 : " + guildList.get(i).isParty() + "]");
 			System.out.println();
 		}
