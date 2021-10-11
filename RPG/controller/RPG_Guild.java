@@ -60,12 +60,14 @@ public class RPG_Guild {
 				System.out.println(" / " + guildList.get(i).getMaxHp() + "]");
 			}
 			if (this.guildList.get(i).getWeapon() != null) {
-				System.out.print("[공격력 : " + (guildList.get(i).getAtk() + guildList.get(i).getWeapon().getPower()) + "]");
+				System.out
+						.print("[공격력 : " + (guildList.get(i).getAtk() + guildList.get(i).getWeapon().getPower()) + "]");
 			} else {
 				System.out.print("[공격력 : " + guildList.get(i).getAtk() + "]");
 			}
 			if (this.guildList.get(i).getArmor() != null) {
-				System.out.print(" [방어력 : " + (guildList.get(i).getDef() +  guildList.get(i).getArmor().getPower()) +"]");
+				System.out
+						.print(" [방어력 : " + (guildList.get(i).getDef() + guildList.get(i).getArmor().getPower()) + "]");
 			} else {
 				System.out.print(" [방어력 : " + guildList.get(i).getDef() + "]");
 			}
@@ -203,9 +205,88 @@ public class RPG_Guild {
 			} else if (sel == 4) {
 				partyChange();
 			} else if (sel == 5) {
-
+				sort();
 			} else if (sel == 0) {
 				break;
+			}
+		}
+	}
+
+	public void sort() {
+		System.out.println("=============== [정렬할 항목] ================");
+		System.out.println("[1. 체력] [2. 공격력] [3. 방어력]");
+		int sel = MainGame.scan.nextInt();
+		if (sel == 1) {
+			for (int i = 0; i < guildList.size(); i++) {
+				int check1 = 0;
+				int check2 = 0;
+				if (guildList.get(i).getRing() != null) {
+					check1 = (guildList.get(i).getHp() + guildList.get(i).getRing().getPower());
+				} else {
+					check1 = guildList.get(i).getHp();
+				}
+				for (int j = 0; j < guildList.size() - 1; j++) {
+					if (guildList.get(j).getRing() != null) {
+						check2 = (guildList.get(j).getHp() + guildList.get(j).getRing().getPower());
+					} else {
+						check2 = guildList.get(j).getHp();
+					}
+					
+					if(check1 > check2) {
+						RPG_Unit temp = guildList.get(i);
+						guildList.set(i, guildList.get(j));
+						guildList.set(j,temp);
+					}
+					
+				}
+			}
+		} else if (sel == 2) {
+			for (int i = 0; i < guildList.size(); i++) {
+				int check1 = 0;
+				int check2 = 0;
+				if (guildList.get(i).getWeapon() != null) {
+					check1 = (guildList.get(i).getAtk() + guildList.get(i).getWeapon().getPower());
+				} else {
+					check1 = guildList.get(i).getAtk();
+				}
+				for (int j = 0; j < guildList.size() - 1; j++) {
+					if (guildList.get(j).getWeapon() != null) {
+						check2 = (guildList.get(j).getAtk() + guildList.get(j).getWeapon().getPower());
+					} else {
+						check2 = guildList.get(j).getAtk();
+					}
+					
+					if(check1 > check2) {
+						RPG_Unit temp = guildList.get(i);
+						guildList.set(i, guildList.get(j));
+						guildList.set(j,temp);
+					}
+					
+				}
+			}
+		} else if (sel == 3) {
+			for (int i = 0; i < guildList.size(); i++) {
+				int check1 = 0;
+				int check2 = 0;
+				if (guildList.get(i).getArmor() != null) {
+					check1 = (guildList.get(i).getDef() + guildList.get(i).getArmor().getPower());
+				} else {
+					check1 = guildList.get(i).getDef();
+				}
+				for (int j = 0; j < guildList.size() - 1; j++) {
+					if (guildList.get(j).getWeapon() != null) {
+						check2 = (guildList.get(j).getDef() + guildList.get(j).getArmor().getPower());
+					} else {
+						check2 = guildList.get(j).getDef();
+					}
+					
+					if(check1 > check2) {
+						RPG_Unit temp = guildList.get(i);
+						guildList.set(i, guildList.get(j));
+						guildList.set(j,temp);
+					}
+					
+				}
 			}
 		}
 	}
