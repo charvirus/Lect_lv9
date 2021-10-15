@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="Lect_lv9/src"/>
 	<classpathentry kind="src" path="RPG"/>
 	<classpathentry kind="src" path="abstractZombie"/>
-	<classpathentry kind="src" path="Inherit"/>
+	<classpathentry kind="src" path="InheritZombie"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

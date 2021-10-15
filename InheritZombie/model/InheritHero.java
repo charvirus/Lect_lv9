@@ -15,10 +15,10 @@ public class InheritHero extends InheritUnit {
 		if (cnt > 0) {
 			this.setHp(this.getHp() + 100);
 			cnt--;
-			System.out.println("Ã¼·ÂÀÌ 100È¸º¹ µÊ");
-			System.out.println("ÇöÀç Ã¼·Â : " + this.getHp());
+			System.out.println("ì²´ë ¥ì´ 100íšŒë³µ ë¨");
+			System.out.println("í˜„ì¬ ì²´ë ¥ : " + this.getHp());
 		} else {
-			System.out.println("¹°¾à ºÎÁ·");
+			System.out.println("ë¬¼ì•½ ë¶€ì¡±");
 		}
 	}
 
@@ -30,34 +30,34 @@ public class InheritHero extends InheritUnit {
 				if (dam <= 0) {
 					dam = 1;
 				}
-				System.out.println(getName() + "ÀÇ °ø°İ");
-				System.out.println(dam + "ÀÇ ÇÇÇØ ÀÔÈû");
+				System.out.println(getName() + "ì˜ ê³µê²©");
+				System.out.println(dam + "ì˜ í”¼í•´ ì…í˜");
 				((InheritZombieKing) target).setShield(((InheritZombieKing) target).getShield() - dam);
 				if (((InheritZombieKing) target).getShield() <= 0) {
-					System.out.println("½¯µå°¡ ÆÄ±« µÆ´Ù.");
+					System.out.println("ì‰´ë“œê°€ íŒŒê´´ ëë‹¤.");
 					((InheritZombieKing) target).setShield(0);
 				}
-				System.out.println(target.getName() + "ÀÇ ³²´Â Ã¼·Â : " + target.getHp() + "(½¯µå : "
+				System.out.println(target.getName() + "ì˜ ë‚¨ëŠ” ì²´ë ¥ : " + target.getHp() + "(ì‰´ë“œ : "
 						+ ((InheritZombieKing) target).getShield() + ")");
 			} else {
 				int dam = (this.getAtk() - target.getDef()) * (ran.nextInt(150) + 50) / 100;
 				if (dam <= 0) {
 					dam = 1;
 				}
-				System.out.println(this.getName() + "ÀÇ °ø°İ!");
-				System.out.println(dam + "ÀÇ ´ë¹ÌÁö!");
+				System.out.println(this.getName() + "ì˜ ê³µê²©!");
+				System.out.println(dam + "ì˜ ëŒ€ë¯¸ì§€!");
 				target.setHp(target.getHp() - dam);
-				System.out.println(target.getName() + "ÀÇ ³²Àº Ã¼·Â : " + target.getHp());
+				System.out.println(target.getName() + "ì˜ ë‚¨ì€ ì²´ë ¥ : " + target.getHp());
 			}
 		}else {
 			int dam = (this.getAtk() - target.getDef()) * (ran.nextInt(150) + 50) / 100;
 			if (dam <= 0) {
 				dam = 1;
 			}
-			System.out.println(this.getName() + "ÀÇ °ø°İ!");
-			System.out.println(dam + "ÀÇ ´ë¹ÌÁö!");
+			System.out.println(this.getName() + "ì˜ ê³µê²©!");
+			System.out.println(dam + "ì˜ ëŒ€ë¯¸ì§€!");
 			target.setHp(target.getHp() - dam);
-			System.out.println(target.getName() + "ÀÇ ³²Àº Ã¼·Â : " + target.getHp());
+			System.out.println(target.getName() + "ì˜ ë‚¨ì€ ì²´ë ¥ : " + target.getHp());
 		}
 	}
 

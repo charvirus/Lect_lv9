@@ -24,19 +24,19 @@ public class AbstractZombieKing extends AbstractUnit {
 				dam = 1;
 			}
 			dam *= 2;
-			System.out.println(getName() + "ÀÇ ÇÊ»ì±â");
-			System.out.println(dam + "ÀÇ ÇÇÇØ¸¦ ÀÔÈû");
+			System.out.println(getName() + "ì˜ í•„ì‚´ê¸°");
+			System.out.println(dam + "ì˜ í”¼í•´ë¥¼ ì…í˜");
 			target.setHp(target.getHp() - dam);
-			System.out.println(target.getName() + "ÀÇ ³²´Â Ã¼·Â : " + target.getHp());
+			System.out.println(target.getName() + "ì˜ ë‚¨ëŠ” ì²´ë ¥ : " + target.getHp());
 		} else {
 			int dam = (this.getAtk() - target.getDef()) * (ran.nextInt(150) + 50) / 100;
 			if (dam <= 0) {
 				dam = 1;
 			}
-			System.out.println(this.getName() + "ÀÇ °ø°İ!");
-			System.out.println(dam + "ÀÇ ´ë¹ÌÁö!");
+			System.out.println(this.getName() + "ì˜ ê³µê²©!");
+			System.out.println(dam + "ì˜ ëŒ€ë¯¸ì§€!");
 			target.setHp(target.getHp() - dam);
-			System.out.println(target.getName() + "ÀÇ ³²Àº Ã¼·Â : " + target.getHp());
+			System.out.println(target.getName() + "ì˜ ë‚¨ì€ ì²´ë ¥ : " + target.getHp());
 		}
 	}
 	

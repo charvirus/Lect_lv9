@@ -27,17 +27,17 @@ public class AbstractGame {
 	private ArrayList<InheritUnit> enemy = new ArrayList<>();
 
 	private void init() {
-		p = new InheritHero("¿ë»ç", 100, 5, 1, 1);
-		enemy.add(new InheritZombie("±×³ÉÁ»ºñ", 25, 5, 1, 3));
-		enemy.add(new InheritZombie("Èû½ëÁ»ºñ", 45, 10, 2, 6));
-		enemy.add(new InheritZombie("Á¤¿¹Á»ºñ", 65, 15, 3, 9));
-		enemy.add(new InheritZombieKing("Á»ºñ¿Õ", 100, 20, 4, 12, 50));
+		p = new InheritHero("ìš©ì‚¬", 100, 5, 1, 1);
+		enemy.add(new InheritZombie("ê·¸ëƒ¥ì¢€ë¹„", 25, 5, 1, 3));
+		enemy.add(new InheritZombie("í˜ìˆì¢€ë¹„", 45, 10, 2, 6));
+		enemy.add(new InheritZombie("ì •ì˜ˆì¢€ë¹„", 65, 15, 3, 9));
+		enemy.add(new InheritZombieKing("ì¢€ë¹„ì™•", 100, 20, 4, 12, 50));
 	}
 
 	private int chk() {
 		for (int i = 0; i < enemy.size(); i++) {
 			if (p.getPos() == enemy.get(i).getPos()) {
-				System.out.println("Á»ºñ ÃâÇö");
+				System.out.println("ì¢€ë¹„ ì¶œí˜„");
 				return i;
 			}
 		}
@@ -60,8 +60,8 @@ public class AbstractGame {
 			System.out.println("==== VS ====");
 			enemy.print();
 			System.out.println("------------");
-			System.out.println("[¹«¾ùÀ» ÇÒ±î?]");
-			System.out.println("1. °ø°İ \t2. ¹°¾à(" + p.getcnt() + ")");
+			System.out.println("[ë¬´ì—‡ì„ í• ê¹Œ?]");
+			System.out.println("1. ê³µê²© \t2. ë¬¼ì•½(" + p.getcnt() + ")");
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				p.attack(enemy);
@@ -79,20 +79,20 @@ public class AbstractGame {
 			System.out.println();
 		}
 		if (die(enemy) == 1) {
-			System.out.println("»ç¸Á");
+			System.out.println("ì‚¬ë§");
 			return false;
 		} else {
-			System.out.println("½Â¸®");
+			System.out.println("ìŠ¹ë¦¬");
 			return true;
 		}
 	}
 
 	private void map(int a) {
-		System.out.println("[ ÇöÀç Ãş : " + p.getPos() + "]");
-		System.out.println("[1] : ¿Ã¶ó°£´Ù");
+		System.out.println("[ í˜„ì¬ ì¸µ : " + p.getPos() + "]");
+		System.out.println("[1] : ì˜¬ë¼ê°„ë‹¤");
 		if (a == 1) {
-			System.out.println("[2] : Ã¼·Â È¸º¹");
-			System.out.println("[3] : ¹«±â °­È­");
+			System.out.println("[2] : ì²´ë ¥ íšŒë³µ");
+			System.out.println("[3] : ë¬´ê¸° ê°•í™”");
 		}
 	}
 
@@ -101,7 +101,7 @@ public class AbstractGame {
 		int act = 1;
 		while (true) {
 			if (p.getPos() >= 12) {
-				System.out.println("»ıÁ¸Çß´Ù.");
+				System.out.println("ìƒì¡´í–ˆë‹¤.");
 				break;
 			}
 
@@ -116,24 +116,24 @@ public class AbstractGame {
 						break;
 					}
 				} else {
-					System.out.println("¾Æ¹«ÀÏµµ ÀÏ¾î³ªÁö ¾Ê¾Ò´Ù.");
+					System.out.println("ì•„ë¬´ì¼ë„ ì¼ì–´ë‚˜ì§€ ì•Šì•˜ë‹¤.");
 				}
 				act = 1;
 			} else if (sel == 2&& act == 1 ) {
 				int rnum = ran.nextInt(40) + 20;
 				p.setHp(p.getHp() + rnum);
-				System.out.println("Ã¼·Â " + rnum + " È¸º¹");
+				System.out.println("ì²´ë ¥ " + rnum + " íšŒë³µ");
 				act = 2;
 			} else if (sel == 3&&act == 1) {
 				int rnum = ran.nextInt(2) + 1;
 				if (rnum == 1) {
 					rnum = ran.nextInt(3) + 1;
 					p.setAtk(p.getAtk() + rnum);
-					System.out.println("°ø°İ·Â " + rnum + " Áõ°¡");
+					System.out.println("ê³µê²©ë ¥ " + rnum + " ì¦ê°€");
 				} else if (rnum == 2) {
 					rnum = ran.nextInt(3) + 1;
 					p.setDef(p.getDef() + rnum);
-					System.out.println("¹æ¾î·Â " + rnum + " Áõ°¡");
+					System.out.println("ë°©ì–´ë ¥ " + rnum + " ì¦ê°€");
 				}
 				act = 2;
 			}

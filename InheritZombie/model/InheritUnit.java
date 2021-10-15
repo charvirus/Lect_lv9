@@ -51,7 +51,7 @@ public abstract class InheritUnit {
 	public abstract void attack(InheritUnit target) ;
 	
 	public void print() {
-		System.out.println("[ÀÌ¸§] : "+name+"  [Ã¼·Â] : "+hp);
-		System.out.println("[°ø°İ·Â] : "+atk+" [¹æ¾î·Â] : "+def+" [À§Ä¡] : "+pos);
+		System.out.println("[ì´ë¦„] : "+name+"  [ì²´ë ¥] : "+hp);
+		System.out.println("[ê³µê²©ë ¥] : "+atk+" [ë°©ì–´ë ¥] : "+def+" [ìœ„ì¹˜] : "+pos);
 	}
 }

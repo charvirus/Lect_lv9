@@ -12,10 +12,10 @@ public class InheritZombie extends InheritUnit{
 		if (dam <= 0) {
 			dam = 1;
 		}
-		System.out.println(this.getName() + "ÀÇ °ø°Ý!");
-		System.out.println(dam + "ÀÇ ´ë¹ÌÁö!");
+		System.out.println(this.getName() + "ì˜ ê³µê²©!");
+		System.out.println(dam + "ì˜ ëŒ€ë¯¸ì§€!");
 		target.setHp(target.getHp() - dam);
-		System.out.println(target.getName() + "ÀÇ ³²Àº Ã¼·Â : " + target.getHp());
+		System.out.println(target.getName() + "ì˜ ë‚¨ì€ ì²´ë ¥ : " + target.getHp());
 	}
 
 	
