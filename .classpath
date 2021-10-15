@@ -3,5 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="Lect_lv9/src"/>
 	<classpathentry kind="src" path="RPG"/>
+	<classpathentry kind="src" path="abstractZombie"/>
+	<classpathentry kind="src" path="Inherit"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
