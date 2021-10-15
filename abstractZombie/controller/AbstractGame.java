@@ -4,18 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import model.InheritHero;
-import model.InheritUnit;
-import model.InheritZombie;
-import model.InheritZombieKing;
+import model.AbstractHero;
+import model.AbstractUnit;
+import model.AbstractZombie;
+import model.AbstractZombieKing;
 
 public class AbstractGame {
 	Random ran = new Random();
 	Scanner scan = new Scanner(System.in);
-
-	private AbstractGame() {
-
-	}
 
 	private static AbstractGame instance = new AbstractGame();
 
@@ -23,15 +19,15 @@ public class AbstractGame {
 		return instance;
 	};
 
-	private InheritHero p;
-	private ArrayList<InheritUnit> enemy = new ArrayList<>();
+	private AbstractHero p;
+	private ArrayList<AbstractUnit> enemy = new ArrayList<>();
 
 	private void init() {
-		p = new InheritHero("용사", 100, 5, 1, 1);
-		enemy.add(new InheritZombie("그냥좀비", 25, 5, 1, 3));
-		enemy.add(new InheritZombie("힘쎈좀비", 45, 10, 2, 6));
-		enemy.add(new InheritZombie("정예좀비", 65, 15, 3, 9));
-		enemy.add(new InheritZombieKing("좀비왕", 100, 20, 4, 12, 50));
+		p = new AbstractHero("용사", 100, 5, 1, 1);
+		enemy.add(new AbstractZombie("그냥좀비", 25, 5, 1, 3));
+		enemy.add(new AbstractZombie("힘쎈좀비", 45, 10, 2, 6));
+		enemy.add(new AbstractZombie("정예좀비", 65, 15, 3, 9));
+		enemy.add(new AbstractZombieKing("좀비왕", 100, 20, 4, 12, 50));
 	}
 
 	private int chk() {
@@ -44,7 +40,7 @@ public class AbstractGame {
 		return -1;
 	}
 
-	private int die(InheritUnit a) {
+	private int die(AbstractUnit a) {
 		if (p.getHp() <= 0) {
 			return 1;
 		} else if (a.getHp() <= 0) {
@@ -54,7 +50,7 @@ public class AbstractGame {
 		}
 	}
 
-	private boolean fight(InheritUnit enemy) {
+	private boolean fight(AbstractUnit enemy) {
 		while (true) {
 			p.print();
 			System.out.println("==== VS ====");

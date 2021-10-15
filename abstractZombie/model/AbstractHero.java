@@ -1,6 +1,6 @@
 package model;
 
-public class AbstractHero extends InheritUnit {
+public class AbstractHero extends AbstractUnit {
 	private int cnt = 3;
 
 	public AbstractHero(String name, int hp, int atk, int def, int pos) {
@@ -23,22 +23,22 @@ public class AbstractHero extends InheritUnit {
 	}
 
 	@Override
-	public void attack(InheritUnit target) {
-		if (target instanceof InheritZombieKing) {
-			if (((InheritZombieKing) target).getShield() > 0) {
+	public void attack(AbstractUnit target) {
+		if (target instanceof AbstractZombieKing) {
+			if (((AbstractZombieKing) target).getShield() > 0) {
 				int dam = (this.getAtk() - target.getDef()) * (ran.nextInt(150) + 50) / 100;
 				if (dam <= 0) {
 					dam = 1;
 				}
 				System.out.println(getName() + "의 공격");
 				System.out.println(dam + "의 피해 입힘");
-				((InheritZombieKing) target).setShield(((InheritZombieKing) target).getShield() - dam);
-				if (((InheritZombieKing) target).getShield() <= 0) {
+				((AbstractZombieKing) target).setShield(((AbstractZombieKing) target).getShield() - dam);
+				if (((AbstractZombieKing) target).getShield() <= 0) {
 					System.out.println("쉴드가 파괴 됐다.");
-					((InheritZombieKing) target).setShield(0);
+					((AbstractZombieKing) target).setShield(0);
 				}
 				System.out.println(target.getName() + "의 남는 체력 : " + target.getHp() + "(쉴드 : "
-						+ ((InheritZombieKing) target).getShield() + ")");
+						+ ((AbstractZombieKing) target).getShield() + ")");
 			} else {
 				int dam = (this.getAtk() - target.getDef()) * (ran.nextInt(150) + 50) / 100;
 				if (dam <= 0) {

@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-public class InterfaceUnit implements AttackInterface {
+public abstract class InterfaceUnit implements AttackInterface {
 	Random ran = new Random();
 	private String name;
 	private int hp;
