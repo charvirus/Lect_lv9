@@ -10,5 +10,6 @@
 	<classpathentry kind="src" path="abstractZombie"/>
 	<classpathentry kind="src" path="InheritZombie"/>
 	<classpathentry kind="src" path="InterfaceZombie"/>
+	<classpathentry kind="src" path="MarkedInterface"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
